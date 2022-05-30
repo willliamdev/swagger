@@ -95,6 +95,98 @@
             }
           }
         }
+      },
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users",
+        "description": "this route allows only an admin to get an Array with all users, you must send the user id in the request header",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "user_id",
+            "description": "admin id to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Users Array",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "date"
+                    },
+                    "updated_at": {
+                      "type": "date"
+                    }
+                  },
+                  "example": [
+                    {
+                      "id": "09e4eb0f-fb9b-4717-9771-254af351aae9",
+                      "admin": true,
+                      "name": "Jake Peralta",
+                      "email": "jakeperalta99@email.com",
+                      "created_at": "2022-05-30T11:22:56.407Z",
+                      "updated_at": "2022-05-30T11:22:56.407Z"
+                    },
+                    {
+                      "id": "a53e0cd2-4ee8-4533-90b0-90b57bb8ee8a",
+                      "admin": false,
+                      "name": "Amy Santiago",
+                      "email": "amysantiago99@email.com",
+                      "created_at": "2022-05-30T11:22:56.407Z",
+                      "updated_at": "2022-05-30T11:22:56.407Z"
+                    },
+                    {
+                      "id": "cb2089ba-b50b-4eb1-a4bf-4cb0f8d4910d",
+                      "admin": false,
+                      "name": "Charles Boyle",
+                      "email": "jakesnumberonefan@email.com",
+                      "created_at": "2022-05-30T13:35:56.201Z",
+                      "updated_at": "2022-05-30T13:35:56.201Z"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An email can only be linked to 1 user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "Error": "Email is already being used"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/users/{user_id}/admin": {
@@ -184,9 +276,11 @@
           {
             "in": "path",
             "name": "user_id",
-            "description": "user id to fetch",
-            "required": true,
-            "type": "string"
+            "shcema": {
+              "type": "string"
+            },
+            "description": "Admin ID to fetch",
+            "required": true
           }
         ],
         "responses": {
