@@ -15,7 +15,7 @@
           "Users"
         ],
         "summary": "Create a new user",
-        "description": "..........",
+        "description": "To create a new user you have to send an object containing name and email",
         "requestBody": {
           "content": {
             "application/json": {
@@ -31,7 +31,7 @@
                 },
                 "example": {
                   "name": "Jake Peralta",
-                  "description": "jakeperalta99@mail.com"
+                  "email": "jakeperalta99@mail.com"
                 }
               }
             }
@@ -39,10 +39,60 @@
         },
         "responses": {
           "201": {
-            "description": "Created user"
+            "description": "Created user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "date"
+                    },
+                    "updated_at": {
+                      "type": "date"
+                    }
+                  },
+                  "example": {
+                    "id": "09e4eb0f-fb9b-4717-9771-254af351aae9",
+                    "admin": false,
+                    "name": "Jake Peralta",
+                    "email": "jakeperalta99@mail.com",
+                    "created_at": "2022-05-30T11:22:56.407Z",
+                    "updated_at": "2022-05-30T11:22:56.407Z"
+                  }
+                }
+              }
+            }
           },
           "400": {
-            "description": "Email is already being used"
+            "description": "An email can only be linked to 1 user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "Error": "Email is already being used"
+                  }
+                }
+              }
+            }
           }
         }
       }
