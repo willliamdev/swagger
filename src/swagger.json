@@ -17,6 +17,7 @@
         "summary": "Create a new user",
         "description": "To create a new user you have to send an object containing name and email",
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -31,7 +32,7 @@
                 },
                 "example": {
                   "name": "Jake Peralta",
-                  "email": "jakeperalta99@mail.com"
+                  "email": "jakeperalta99@email.com"
                 }
               }
             }
@@ -68,7 +69,7 @@
                     "id": "09e4eb0f-fb9b-4717-9771-254af351aae9",
                     "admin": false,
                     "name": "Jake Peralta",
-                    "email": "jakeperalta99@mail.com",
+                    "email": "jakeperalta99@email.com",
                     "created_at": "2022-05-30T11:22:56.407Z",
                     "updated_at": "2022-05-30T11:22:56.407Z"
                   }
@@ -236,7 +237,7 @@
                     "id": "09e4eb0f-fb9b-4717-9771-254af351aae9",
                     "admin": true,
                     "name": "Jake Peralta",
-                    "email": "jakeperalta99@mail.com",
+                    "email": "jakeperalta99@email.com",
                     "created_at": "2022-05-30T11:22:56.407Z",
                     "updated_at": "2022-05-30T11:22:56.407Z"
                   }
@@ -285,7 +286,7 @@
         ],
         "responses": {
           "200": {
-            "description": "User data",
+            "description": "User profile",
             "content": {
               "application/json": {
                 "schema": {
@@ -314,6 +315,7 @@
                     "id": "09e4eb0f-fb9b-4717-9771-254af351aae9",
                     "admin": false,
                     "name": "Jake Peralta",
+                    "email": "jakeperalta99@email.com",
                     "created_at": "2022-05-30T11:22:56.407Z",
                     "updated_at": "2022-05-30T11:22:56.407Z"
                   }
