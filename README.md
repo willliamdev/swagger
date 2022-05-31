@@ -24,7 +24,7 @@
 Clone the project
 
 ```bash
-  git clone https://github.com/willliamdev/trilha-ignite.git
+  git clone https://github.com/willliamdev/swagger.git
 ```
 
 Go to the project directory
